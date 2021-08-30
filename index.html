@@ -4,128 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>002表单相关标签练习.html</title>
+    <title>06ccs盒模型使用-常见网页布局</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        .top {
+            height: 40px;
+            background-color: gray;
+            text-align: center;
+            margin: 8px 8px;
+        }
+        .banner {
+            width: 960px;
+            background-color: gray;
+            margin-top: 20px;
+            height: 100px;
+            margin : 0 auto;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .content {
+            width: 960px;
+            height: 300px;
+            background-color: gray;
+            margin: 0 auto;
+            
+
+        }
+        .content>div {
+            /* 浮动的使用 */
+            float: left;
+            width: 230px;
+            height: 140px;
+            background-color: pink;
+            margin: 7px 0 0 8px;
+
+        }
+        .footer {
+            background-color: gray;
+            height: 300px;
+            margin: 8px 8px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h3>使用表格来用作布局基础</h3>
-    <h4>熟练使用以下几种类型文本输入框text单选radio，多选chebox，下拉框select(子元素option),了解textarea</h4>
-    <h4>注意label中的for标签和组件中id一样可以增加点击范围</h4>
-
-    <h4>青春不常在，抓紧谈恋爱</h4>
-    <p></p>
-    <form>
-        <table width="800" cellpadding="10">
-            <tr>
-                <td>
-                    性别
-                </td>
-                <td>
-                    <label for="nan">男 </label><input type="radio" name="sex" id="nan" checked/>
-                    <label for="nv">女 </label><input type="radio" name="sex" id="nv"/>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    生日
-                </td>
-                <td>
-                    <select>
-                        <option selected>--请选择年份--</option>
-                        <option>1995</option>
-                        <option>1996</option>
-                        <option>1997</option>
-                        <option>1998</option>
-                    </select>
-                    <select>
-                        <option selected>--请选择月份--</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                    <select>
-                        <option selected>--请选择日--</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                </td>
-            </tr>
-
-            <tr>
-                <td>所在地区</td>
-                <td>
-                    <input type="text" value="请输入你的地址">
-                </td>
-            </tr>
-
-            <tr>
-                <td>婚姻情况</td>
-                <td>
-                    <label for="weihun">未婚</label><input type="radio" name="marry" id="weihun" checked/>
-                    <label for="yihun">已婚</label><input type="radio" name="marry" id="yihun" />
-                    <label for="lihun">离婚</label><input type="radio" name="marry" id="lihun" />
-                </td>
-            </tr>
-
-            <tr>
-                <td>学历</td>
-                <td>
-                    <input type="text" name="stu" value="请输入你的最高学历"/>
-                </td>
-            </tr>
-
-            <tr>
-                <td>喜欢类型</td>
-                <td>
-                    <label for="young">小鲜肉</label><input type="checkbox" name="like" id="young"/>
-                    <label for="old">成熟型</label><input type="checkbox" name="like" id="old"/>
-                    <label for="lovly">可爱型</label><input type="checkbox" name="like" id="lovely"/>
-                    <label for="all">都喜欢</label><input type="checkbox" name="like" id="all" checked/>
-                </td>
-            </tr>
-
-            <tr>
-                <td>自我介绍</td>
-                <td>
-                    
-                    <textarea rows="4">请输入自我介绍</textarea>
-                </td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td>
-                    
-                    <input type="submit" name="commit" value="免费注册">
-                </td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td>
-                    <a href="#">我是会员，立即登录</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td>
-                    <h4>我承诺</h4>
-                    <p></p>
-                    <ul>
-                        <li>年满十八周岁、单身</li>
-                        <li>抱着严肃的态度</li>
-                        <li>真诚寻找另一半</li>
-                    </ul>
-                </td>
-            </tr>
-            
-        </table>
-
-    </form>
-
+    <div class="top">top</div>
+    <div class="banner">banner</div>
+    <div class="content">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+    </div>
+    <div class="footer">footer</div>
 </body>
 </html>
