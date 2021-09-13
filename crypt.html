@@ -74,11 +74,11 @@
            float: left;
            margin: 0 20px;
             width: 600px;
-            height: 600px;
+            height: 500px;
             border: 2px solid skyblue;
         }
     </style>
-
+    
 </head>
 
 <body>
@@ -94,20 +94,57 @@
     </div>
 
     <div class="search">
-        <form action="">
+        <!-- <form action="http://192.168.3.234:3000/toCrypt" method="GET"> -->
             <p>请输入文件名称:</p> 
-            <input type="text" name="" id="inputFileName">
+            <input type="text" id="filename" name="filename" id="inputFileName">
             <p>请输入DirectoryKey:</p>
-            <input type="text" name="" id="">
-            <input type="submit" value="查询" class="found">
-        </form>
+            <input type="text" id="DK" name="DK">
+            <input type="button" id="bt1" value="查询" class="found" >
+        <!-- </form> -->
         
     </div>
 
     <div class="output">
-        <textarea>
+        <textarea id="outFile"> 
             
         </textarea>
     </div>
+
 </body>
+
+<script>
+    var bt1= document.getElementById('bt1');
+    bt1.onclick =  function(){
+
+        console.log('11111')
+        var filename = document.getElementById('filename').value;
+        var dk = document.getElementById('DK').value;
+        var str = 'filename='+filename+'&DK='+dk
+        var obj = {
+            'filename' : filename,
+            'DK' : dk
+        }
+
+        //创建ajax对象
+        var xhr = new XMLHttpRequest();
+        //get设置请求方式地址(open)
+        //xhr.open('get','http://192.168.3.21:3000/toCrypt?'+str);
+        xhr.open('post','http://192.168.199.158:3000/toCrypt');
+        xhr.setRequestHeader('Content-Type','application/json');
+        xhr.send(JSON.stringify(obj));
+        xhr.onload = function(){
+            console.log(xhr.responseText);
+            var obj = JSON.parse(xhr.responseText)
+            console.log(obj)
+            var muluName = obj.muluname;
+            var fileName = obj.filename;
+            var muluCrypt = obj.mulucrypt;
+            document.getElementById('outFile').value =
+            '目录名称：'+ muluName+'\n'+
+            '文件加密名称：' +fileName+'\n'+
+            '目录加密名称：' + muluCrypt
+            
+        }
+    }
+</script>
 </html>
