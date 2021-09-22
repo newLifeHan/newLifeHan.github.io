@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>名称加密</title>
+    <style>
+        body {
+            background-color: rgba(231, 234, 237,0.3);
+        }
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        li {
+           list-style: none;
+       }
+       ul li a {
+           float: left;
+           color: black;
+           text-decoration: none;
+           padding: 0 40px;
+           line-height: 60px;
+       }
+       ul li a:hover {
+            background-color: #a1a0a0;
+            color: coral;
+            border-bottom: 2px solid #60adf8;
+       }
+      
+       .nav{
+           border-top: 3px solid coral;
+           background-color: #edeef0ee;
+           height: 60px;
+           margin-bottom: 20px;
+       }
+
+        input{
+            outline:none;
+            border:0px;
+        }
+        .search {
+            height: 60px;
+           
+       }
+       .search p {
+           float: left;
+           margin: 0 20px;
+           line-height: 40px;
+       }
+       .search input {
+           float: left;
+           border: 2px solid skyblue;
+           width: 200px;
+           height: 36px;
+           font-size: 26px;
+           font-weight: 200;
+           border-radius: 8px;
+           
+       }
+    
+       .search .found {
+            float: left;
+            margin: 0 20px;
+            line-height: 40px;
+            width: 100px;
+            height: 36px;
+       }
+       .output {
+            text-align: left;
+        }
+       textarea {
+           float: left;
+           margin: 0 20px;
+            width: 600px;
+            height: 500px;
+            border: 2px solid skyblue;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="nav">
+        <ul>
+            <li>
+                <a href="crypt.html">文件名称加密</a>
+            </li>
+            <li>
+                <a href="ini.html">Game.ini生成</a>
+            </li>
+        </ul>    
+    </div>
+
+    <div class="search">
+        <!-- <form action="http://192.168.3.234:3000/toCrypt" method="GET"> -->
+            <p>请输入文件名称:</p> 
+            <input type="text" id="filename" name="filename" id="inputFileName">
+            <p>请输入DirectoryKey:</p>
+            <input type="text" id="DK" name="DK">
+            <input type="button" id="bt1" value="查询" class="found" >
+        <!-- </form> -->
+        
+    </div>
+
+    <div class="output">
+        <textarea id="outFile"> 
+            
+        </textarea>
+    </div>
+
+</body>
+
+<script>
+    var bt1= document.getElementById('bt1');
+    bt1.onclick =  function(){
+
+        console.log('11111')
+        var filename = document.getElementById('filename').value;
+        var dk = document.getElementById('DK').value;
+        var str = 'filename='+filename+'&DK='+dk
+        var obj = {
+            'filename' : filename,
+            'DK' : dk
+        }
+
+        //创建ajax对象
+        var xhr = new XMLHttpRequest();
+        //get设置请求方式地址(open)
+        //xhr.open('get','http://192.168.3.21:3000/toCrypt?'+str);
+        xhr.open('post','http://1.15.19.180:3000/toCrypt');
+        xhr.setRequestHeader('Content-Type','application/json');
+        xhr.send(JSON.stringify(obj));
+        xhr.onload = function(){
+            console.log(xhr.responseText);
+            var obj = JSON.parse(xhr.responseText)
+            console.log(obj)
+            var muluName = obj.muluname;
+            var fileName = obj.filename;
+            var muluCrypt = obj.mulucrypt;
+            document.getElementById('outFile').value =
+            '目录名称：'+ muluName+'\n'+
+            '文件加密名称：' +fileName+'\n'+
+            '目录加密名称：' + muluCrypt
+            
+        }
+    }
+</script>
+</html>
