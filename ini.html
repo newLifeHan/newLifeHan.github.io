@@ -49,6 +49,7 @@
             width: 600px;
             height: 600px;
             border: 2px solid skyblue;
+            font-size: 12px;
         }
         
         
@@ -69,17 +70,46 @@
     </div>
 
     <div class="fileArea">
-        <form action="">
-            <input type="file" name="">
-            <input type="submit" value="生成" class="found">
+        <form id='fileForm' action="">
+            <input id='cfgfile'  type="file" name="">
+            <input type="button" value="生成ini文本" class="found" onclick="sendFile(1)">
+            <input type="button" value="生成ini文件" class="found" onclick="sendFile(2)">
         </form>
         
     </div>
 
     <div class="output">
-        <textarea>
+        <textarea id="iniResult">
             
         </textarea>
     </div>
+
+    <script>
+        function sendFile(flag){
+            var form = new FormData();
+            
+            var xhr = new XMLHttpRequest();
+            
+            var file = document.getElementById('cfgfile');
+            console.log(file.files[0])
+
+            form.append('file',file.files[0]);
+            form.append('flag',flag);
+            
+            xhr.open('post','http://1.15.19.180:3000/toIni')
+            xhr.send(form);
+
+            xhr.onload = function(){
+                var iniData = xhr.responseText;
+                if(flag==1){
+                    document.getElementById('iniResult').value = iniData;
+                }else{
+                    document.getElementById('iniResult').value = iniData;
+                }
+                
+            }
+        }
+    </script>
 </body>
+
 </html>

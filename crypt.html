@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+   
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -130,7 +130,7 @@
         var xhr = new XMLHttpRequest();
         //get设置请求方式地址(open)
         //xhr.open('get','http://192.168.3.21:3000/toCrypt?'+str);
-        xhr.open('post','//192.168.199.158:3000/toCrypt');
+        xhr.open('post','http://1.15.19.180:3000/toCrypt');
         xhr.setRequestHeader('Content-Type','application/json');
         xhr.send(JSON.stringify(obj));
         xhr.onload = function(){
