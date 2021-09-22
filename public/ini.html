@@ -96,7 +96,7 @@
             form.append('file',file.files[0]);
             form.append('flag',flag);
             
-            xhr.open('post','http://1.15.19.180:3000/toIni')
+            xhr.open('post','http://1.15.19.180:3000/toIni');
             xhr.send(form);
 
             xhr.onload = function(){
